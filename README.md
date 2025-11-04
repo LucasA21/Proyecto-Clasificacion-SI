@@ -50,7 +50,8 @@ Proyecto-Clasificacion-SI/
 │   └── MejoresFeatures.py          # Búsqueda de mejores features
 ├── Docs/
 │   └── proyecto.md                 # Especificaciones del proyecto
-├── resultados_phishing/            # Directorio con resultados (generado)
+├── Data/
+│   └── resultados/                # Directorio con resultados (generado)
 ├── utils.py                        # Utilidades para cargar datos
 ├── main.py                         # Script principal recomendado
 ├── requirements.txt                # Dependencias del proyecto
