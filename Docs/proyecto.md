@@ -4,8 +4,7 @@
 **Conjunto de datos:** [https://archive.ics.uci.edu/dataset/327/phishing+websites](https://archive.ics.uci.edu/dataset/327/phishing+websites)
 **Fecha de entrega:** 10 de noviembre
 **Entregables**
-1.  Parte 1
-    Desarrollo del Script
+1.  Parte 1 Desarrollo del Script
 2.  Parte 2 Informe Breve (máx. 3 hojas)
 
 **Desarrollo del Script**
@@ -24,18 +23,7 @@ El estudiante deberá seleccionar y justificar la estrategia de validación empl
 
 Con la división de datos definida, se entrenará un modelo base utilizando `GaussianNB()` sin ajustes iniciales.
 
-El desempeño de este modelo se evaluará con métricas adecuadas para
-
-IDEI
-Instituto de Desarrollo Económico e Innovación
-
----
-SISTEMAS INTELIGENTES
-2025
-UNTDF
-Universaled Nacional de Tierra del Furgs Antártida estas del Atlántico Sar
-
-clasificación binaria, especialmente considerando los riesgos asociados a los falsos negativos en phishing. En el contexto de phishing:
+El desempeño de este modelo se evaluará con métricas adecuadas para clasificación binaria, especialmente considerando los riesgos asociados a los falsos negativos en phishing. En el contexto de phishing:
 
 * FN (phishing no detectado) → mayor riesgo de fraude
 * FP (sitio legítimo marcado como phishing) → molestia para el usuario
@@ -64,15 +52,6 @@ Por eso, es importante equilibrar ambas métricas, lo que justifica el uso del F
 Posteriormente, se avanzará con la optimización de hiperparámetros. Para ello, será necesario seleccionar al menos un hiperparámetro que pueda influir significativamente en los resultados -como `var_smoothing`- y definir un espacio de búsqueda razonable.
 
 Se recomienda utilizar técnicas como `GridSearchCV` o `RandomizedSearchCV`, priorizando el F1-score como criterio de evaluación debido al contexto de fraude, donde el equilibrio entre precisión y recall es relevante.
-
-IDEI
-Instituto de Desarrollo Económico e Innovación
-
----
-SISTEMAS INTELIGENTES
-2025
-UNTDF
-Universidad Nacional de Tierra del Furgs Antártida estas del Atlántico Sar
 
 Finalizado el proceso de optimización, se realizará una comparación entre el modelo base y el modelo ajustado utilizando métricas tales como Accuracy, Precision, Recall, F1-score y matriz de confusión.
 
@@ -117,5 +96,3 @@ El informe debe incluir:
         ii. ¿Por qué es delicado fallar en phishing?
     e. ¿El modelo alcanzó desempeño suficiente? ¿Por qué?
 
-IDEI
-Instituto de Desarrollo Económico e Innovación
