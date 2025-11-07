@@ -34,19 +34,20 @@ import visualization
 # CONFIGURACIÓN GLOBAL
 # ============================================================
 
-# Semilla de aleatoriedad para garantizar reproducibilidad
-RANDOM_STATE = 42
+# Semilla de aleatoriedad para garantizar reproducibilidad (configurable por entorno)
+RANDOM_STATE = int(os.getenv("RANDOM_STATE", 42))
 
 # Directorio donde se guardarán los resultados
-OUTPUT_DIR = "Data/resultados"
+OUTPUT_SUBDIR = os.getenv("OUTPUT_SUBDIR", "resultados")
+OUTPUT_DIR = os.path.join("Data", OUTPUT_SUBDIR)
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-# Configuración de selección de características
+# Configuración de selección de características (configurable por entorno)
 # Si USAR_SELECCION=True, se realizará búsqueda aleatoria de características
 # Si USAR_SELECCION=False, se usarán todas las características
-USAR_SELECCION = True
-N_ITER_SELECCION = 1000  # Número de iteraciones para búsqueda aleatoria
-K_FEATURES = 5  # Tamaño del subset de características a seleccionar
+USAR_SELECCION = os.getenv("USAR_SELECCION", "True").lower() == "true"
+N_ITER_SELECCION = int(os.getenv("N_ITER_SELECCION", 500))  # Número de iteraciones para búsqueda aleatoria
+K_FEATURES = int(os.getenv("K_FEATURES", 5))  # Tamaño del subset de características a seleccionar
 
 # ============================================================
 # PIPELINE PRINCIPAL

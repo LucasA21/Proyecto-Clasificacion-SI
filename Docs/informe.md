@@ -70,3 +70,12 @@ La selección de características mediante búsqueda aleatoria fue crucial para 
 
 El modelo alcanzó un desempeño suficiente y robusto para ser desplegado en un entorno de producción. Aunque la optimización de hiperparámetros no mejoró las métricas en este caso, el proceso de optimización fue valioso para confirmar que el modelo base ya estaba operando cerca de su óptimo. Para mejoras futuras, se podría considerar el ajuste del umbral de decisión para priorizar aún más la reducción de falsos negativos, el uso de ensembles de modelos, o la incorporación de características adicionales derivadas del análisis de comportamiento de usuarios.
 
+### Comparación de configuraciones
+
+Para comprender las diferencias respecto a los resultados obtenidos por la profesora se reprodujeron ambas configuraciones en nuestro pipeline:
+
+- **Configuración “todas las variables”** (`USAR_SELECCION=False`, `RANDOM_STATE=13`): reproduce el flujo original de `/Algoritmos`. El modelo base alcanzó un F1-score de 0.4497 (recall de 0.2908). Tras optimizar `var_smoothing` el F1-score subió a 0.8527 con recall 0.7595. Esta configuración prioriza precisión (0.97) y mantiene un AUC alto (0.9695), pero deja pasar bastantes sitios de phishing en el escenario base.
+- **Configuración “selección de variables”** (`USAR_SELECCION=True`, `RANDOM_STATE=42`, `K_FEATURES=5`): corresponde a nuestro pipeline final. El modelo base ya arranca con F1-score 0.9082, recall 0.9163 y precisión 0.9002. La optimización confirmó el mismo `var_smoothing`, por lo que las métricas no cambiaron. Esta configuración reduce drásticamente los falsos negativos gracias a la selección de cinco atributos clave antes del entrenamiento.
+
+Los resultados muestran que la mayor diferencia proviene de la etapa de selección de características y del cambio en la partición train/test. Con todas las variables el modelo optimizado sigue siendo competitivo, pero al filtrar las más informativas se consigue un equilibrio superior entre precisión y recall, reduciendo el riesgo de dejar pasar casos de phishing. Esta comparación respalda la decisión de incluir la selección de características en el pipeline principal.
+
