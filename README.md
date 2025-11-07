@@ -1,86 +1,53 @@
 # Proyecto de Clasificación - Detección de Phishing
 
-## Descripción del Proyecto
+## Descripción general
+Este proyecto implementa y documenta un pipeline de **Gaussian Naive Bayes** para detectar sitios web que realizan phishing. El flujo completo vive en el cuaderno `Notebooks/Clasificacion_Phishing.ipynb`, donde se ejecutan todas las etapas del proyecto: exploración del dataset, preprocesamiento, selección de características, ajuste de hiperparámetros y comparación de resultados.
 
-Este proyecto implementa y evalúa un sistema de clasificación para la detección de sitios web que realizan phishing utilizando el algoritmo Gaussian Naive Bayes.
+El infome detallado con el paso a paso y las conclusiones se encuentra en `Docs/Informe.pdf`
 
 **Dataset:** [Phishing Websites](https://archive.ics.uci.edu/dataset/327/phishing+websites)
 
-## Requisitos del Sistema
+## Requisitos
+- Python 3.10 o superior
+- pip para instalar dependencias
 
-- Python 3.8 o superior
-- pip (gestor de paquetes de Python)
-
-## Instalación
-
-### 1. Navegar al directorio del proyecto
-
+## Instalación rápida
 ```bash
 cd Proyecto-Clasificacion-SI
-```
-
-### 2. Crear un entorno virtual
-
-```bash
-# En Linux/Mac
-python3 -m venv venv
-source venv/bin/activate
-
-# En Windows
 python -m venv venv
-venv\Scripts\activate
-```
-
-### 3. Instalar las dependencias
-
-```bash
+source venv/bin/activate   # En Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-## Ejecución del Pipeline
+## Ejecución del pipeline
+1. Activá el entorno virtual (`source venv/bin/activate`).
+2. Abrir `Notebooks/Clasificacion_Phishing.ipynb` en Jupyter Lab / Notebook.
+3. Ejecutá **Run All** para reproducir los resultados.
 
-El script principal `main.py` permite configurar la ejecución a través de variables de entorno:
+El cuaderno genera automáticamente todos los artefactos en `Data/resultados_notebook/`:
+- `distribucion_clases_notebook.png`: distribución de clases.
+- `comparacion_metricas_notebook.csv`: tabla con Accuracy, Precision, Recall, F1-score y AUC-ROC (modelo base vs. optimizado).
+- `frecuencias_optimos_notebook.csv` y `log_random_search_subsets_notebook.csv`: trazabilidad de la búsqueda de características.
+- `roc_modelo_base.png` y `roc_comparacion_notebook.png`: curvas ROC y matrices de confusión comparativas.
 
-- `USAR_SELECCION`: define si se realiza la selección de características (`True` | `False`).
-- `K_FEATURES`: cantidad de variables a seleccionar cuando `USAR_SELECCION=True`.
-- `RANDOM_STATE`: semilla utilizada para la partición train/test y validaciones.
-- `OUTPUT_SUBDIR`: subcarpeta dentro de `Data/` donde se guardarán los resultados.
 
-Ejemplos de uso
-
-```bash
-# Ejecutar con todas las variables (reproduce la configuración de la profesora)
-USAR_SELECCION=False RANDOM_STATE=13 OUTPUT_SUBDIR=resultados_todas_vars python3 main.py
-
-# Ejecutar con selección de variables (pipeline propuesto)
-USAR_SELECCION=True K_FEATURES=5 RANDOM_STATE=42 OUTPUT_SUBDIR=resultados_nuestros python3 main.py
-```
-
-Todos los archivos generados (métricas, visualizaciones, modelos) se almacenan en `Data/<OUTPUT_SUBDIR>/`.
-
-## Estructura del Proyecto
-
+## Estructura del repositorio
 ```
 Proyecto-Clasificacion-SI/
 ├── Data/
-│   └── phishing+websites/
-│       ├── Training Dataset.arff    # Dataset principal
-│       └── Phishing Websites Features.docx
-├── Algoritmos/
-│   ├── Phishing.py                 # Script principal con optimización
-│   └── MejoresFeatures.py          # Búsqueda de mejores features
+│   ├── phishing+websites/           # Dataset original (ARFF)
+│   └── resultados_notebook/         # Artefactos generados por el cuaderno
 ├── Docs/
-│   └── proyecto.md                 # Especificaciones del proyecto
-├── Data/
-│   └── resultados/                # Directorio con resultados (generado)
-├── utils.py                        # Utilidades para cargar datos
-├── main.py                         # Script principal recomendado
-├── requirements.txt                # Dependencias del proyecto
-└── README.md                       # Este archivo
+│   ├── proyecto.md                  # Consigna del trabajo
+│   └── informe.md                   # Informe breve (máx. 3 hojas)
+├── Notebooks/
+│   └── Clasificacion_Phishing.ipynb # Pipeline completo
+├── requirements.txt                 # Dependencias
+├── utils.py                         # Utilidad para cargar el ARFF
+└── README.md
 ```
 
 ## Referencias
-
-- Dataset: [UCI ML Repository - Phishing Websites](https://archive.ics.uci.edu/dataset/327/phishing+websites)
-- Universidad Nacional de Tierra del Fuego (UNTDF) - Sistemas Inteligentes 2025
+- UCI Machine Learning Repository – [Phishing Websites Dataset](https://archive.ics.uci.edu/dataset/327/phishing+websites)
+- Sistemas Inteligentes 2025 – Universidad Nacional de Tierra del Fuego
 
