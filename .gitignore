@@ -44,9 +44,6 @@ coverage.xml
 .hypothesis/
 .pytest_cache/
 
-# Jupyter Notebook
-.ipynb_checkpoints
-*.ipynb
 
 # IPython
 profile_default/
@@ -89,12 +86,4 @@ Desktop.ini
 
 # Linux
 *~
-
-# Project specific - Results (keep structure but ignore content)
-Data/resultados_phishing/*.png
-Data/resultados_phishing/*.csv
-Data/resultados_phishing/*.joblib
-
-# Keep the folder structure
-!Data/resultados_phishing/.gitkeep
 
